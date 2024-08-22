@@ -16,6 +16,31 @@
 	let modals = new Array<{ value: number; message: string; guessType: GuessType }>();
 	let numbersEl: HTMLDivElement;
 	let numbersCount = Object.keys(data.numbers).length;
+	let startTime = performance.now();
+
+	function timeToString(time: number) {
+		let hours = Math.floor(time / 3600000);
+		let minutes = Math.floor((time % 3600000) / 60000);
+		let ret = '';
+		if (hours) {
+			if (hours === 1) {
+				ret += '1 hour';
+			} else {
+				ret += `${hours} hours`;
+			}
+			if (minutes) {
+				ret += ' and ';
+			}
+		}
+		if (minutes || !hours) {
+			if (minutes === 1) {
+				ret += '1 minute';
+			} else {
+				ret += `${minutes} minutes`;
+			}
+		}
+		return ret;
+	}
 
 	function keyPress(e: KeyboardEvent) {
 		if (e.key !== 'Enter') {
@@ -24,6 +49,21 @@
 		if ((e.target as HTMLInputElement).value === '') return;
 		let guess = (e.target as HTMLInputElement).valueAsNumber;
 		(e.target as HTMLInputElement).value = '';
+
+		let alreadyGuessedNumber = data.numbers
+			.concat(data.technicallyIncorrectNumbers)
+			.find(({ value, guessed }) => value === guess && guessed);
+		if (alreadyGuessedNumber) {
+			modals = [
+				{
+					value: alreadyGuessedNumber.value,
+					message: 'You have already guessed this number.',
+					guessType: GuessType.technicallyIncorrect
+				},
+				...modals
+			];
+			return;
+		}
 
 		let technicallyIncorrectNumber = data.technicallyIncorrectNumbers.find(
 			({ value }) => value === guess
@@ -53,10 +93,13 @@
 			guesses++;
 			numbersEl.querySelector(`span[data-value="${number.value}"]`)!.classList.add('bg-green-300');
 			if (data.numbers.every(({ guessed }) => guessed)) {
+				let time = performance.now() - startTime;
 				modals = [
 					{
 						value: NaN,
-						message: 'Congratulations! You have successfully deciphered the secret message',
+						message: `Congratulations! You took ${guesses} guesses to decipher the secret message in ${timeToString(
+							time
+						)}.`,
 						guessType: GuessType.finished
 					},
 					...modals
@@ -67,7 +110,7 @@
 		modals = [
 			{
 				value: guess,
-				message: 'Your guess was incorrect',
+				message: 'Your guess was incorrect.',
 				guessType: GuessType.incorrect
 			},
 			...modals
@@ -104,7 +147,7 @@
 				</li>
 				<li>Each number is 3-6 digits long, truncating if necessary</li>
 				<li>The numbers become harder to identify towards the end</li>
-				<li>The first number is 1970, good luck!</li>
+				<li>You are being timed. The first number is 1970, good luck!</li>
 			</ol>
 		</div>
 		<div class="text-2xl text-center break-words my-10 px-4" bind:this={numbersEl}>
@@ -116,7 +159,10 @@
 				class="block w-full px-3 py-2 bg-white border border-gray-700 rounded-md text-lg shadow-sm placeholder-gray-700 focus:outline-none focus:border-black"
 				placeholder="Enter your guess"
 				on:keypress={keyPress}
-				on:wheel={(e) => e.preventDefault()}
+				on:wheel={() => {
+					// @ts-ignore
+					document.activeElement.blur();
+				}}
 			/>
 			<span class="inline-block mt-1 mb-7 text-gray-700 text-sm">
 				{guesses} guess{guesses === 1 ? '' : 'es'} / {numbersCount} numbers
