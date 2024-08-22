@@ -1,19 +1,30 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { GuessType } from '../routes/+page.svelte';
+	import { fly } from 'svelte/transition';
 	export let value: number;
 	export let message: string;
 	export let guessType: GuessType;
+
+	let visible = false;
+	onMount(() => {
+		visible = true;
+	});
 </script>
 
 {#if guessType === GuessType.finished}
+	{#if visible}
+		<div
+			in:fly={{ y: -25 }}
+			class="rounded-lg overflow-hidden border border-green-700 text-lg px-4 py-6 font-medium bg-green-100"
+		>
+			{message}
+		</div>
+	{/if}
+{:else if visible}
 	<div
-		class="rounded-lg overflow-hidden border my-4 border-green-700 text-lg px-4 py-6 font-medium bg-green-100"
-	>
-		{message}
-	</div>
-{:else}
-	<div
-		class="rounded-lg overflow-hidden border my-4"
+		in:fly={{ y: -25 }}
+		class="rounded-lg overflow-hidden border"
 		class:border-green-700={guessType === GuessType.correct}
 		class:border-red-700={guessType === GuessType.incorrect}
 		class:border-gray-700={guessType === GuessType.technicallyIncorrect}
