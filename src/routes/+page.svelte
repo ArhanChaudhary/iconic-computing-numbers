@@ -135,19 +135,20 @@
 			<ol class="list-decimal pl-[2ch]">
 				<li>
 					There are {numbersCount} computing numbers hidden within this string without overlap (ignore
-					the line wrapping)
+					the line wrapping).
 				</li>
 				<li>
 					Each number is wholly distinct in meaning and iconic in their respective fields of
-					computing
+					computing.
 				</li>
 				<li>
 					This is not a memory test; you should be able to identify each number with little
-					ambiguity without external tools
+					ambiguity without external tools.
 				</li>
-				<li>Each number is 3-6 digits long, truncating if necessary</li>
-				<li>The numbers become harder to identify towards the end</li>
-				<li>You are being timed. The first number is 1970, good luck!</li>
+				<li>You are being timed. Despite that, prioritize minimizing guesses.</li>
+				<li>Each number is 3-6 digits long, truncating if necessary.</li>
+				<li>The numbers become harder to identify towards the end.</li>
+				<li>The first number is 1970, good luck!</li>
 			</ol>
 		</div>
 		<div class="text-2xl text-center break-words my-10 px-4" bind:this={numbersEl}>
