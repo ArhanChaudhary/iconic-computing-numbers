@@ -169,11 +169,8 @@
 			You are being timed. Despite that, <b>prioritize minimizing guesses (&lt;30 guesses) and avoid brute force</b>.
 		</li>
 		<li>
-			There are {numbersCount} computing numbers hidden within this string without overlap, ignore the
+			There are {numbersCount} distinct iconic computing numbers hidden within this string without overlap, ignore the
 			line wrapping.
-		</li>
-		<li>
-			Each number is wholly distinct in meaning and iconic in their respective fields of computing.
 		</li>
 		<li>
 			This is not a memory test; you should be able to identify each number with little ambiguity
