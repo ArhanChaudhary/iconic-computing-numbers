@@ -2,22 +2,6 @@
 	import '../app.css';
 </script>
 
-<!-- cspell: ignore arhan chaudhary -->
-
-<svelte:head>
-	<meta name="description" content="How Many Iconic Computing Numbers can you Recognize?" />
-	<meta property="og:url" content="https://numbers.arhan.sh" />
-	<meta property="og:title" content="Numbers" />
-	<meta property="og:description" content="How Many Iconic Computing Numbers can you Recognize?" />
-	<meta property="og:image" content="https://numbers.arhan.sh/favicon.ico" />
-	<meta name="twitter:card" content="summary" />
-	<meta name="author" content="Arhan Chaudhary" />
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-	<link href="https://fonts.googleapis.com/css2?family=Patua+One&display=swap" rel="stylesheet" />
-	<title>Numbers</title>
-</svelte:head>
-
 <main class="bg-gray-100">
 	<div
 		class="mr-auto ml-auto max-w-5xl min-h-dvh bg-orange-50 px-4 shadow-[0_0_30px_5px] shadow-gray-400 relative pb-10"
