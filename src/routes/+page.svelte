@@ -178,7 +178,7 @@
 		</li>
 		<li>Each number is 3-6 digits long, truncating if necessary.</li>
 		<li>The numbers become harder to identify towards the end.</li>
-		<li>The first number is 1970, good luck!</li>
+		<li>The first number is 1970. Press enter to submit, good luck!</li>
 	</ol>
 </div>
 <div class="text-2xl text-center break-words my-10 px-6" bind:this={numbersEl}>
