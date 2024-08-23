@@ -52,7 +52,7 @@ const numbers = [
 	{
 		value: 414141,
 		message:
-			'"AAA ..." in hexadecimal, a string often used in buffer overflow attacks or other security exploits.',
+			'"AAA ..." in hexadecimal, a string often used in buffer overflow attacks and other security exploits.',
 		guessed: false,
 		link: 'https://en.wikipedia.org/wiki/Buffer_overflow'
 	},
@@ -106,9 +106,9 @@ const numbers = [
 	},
 	{
 		value: 7400,
-		message: 'A popular series of digital logic integrated circuits.',
+		message: 'A popular series of digital logic integrated circuits, once the most popular for TTL.',
 		guessed: false,
-		link: 'https://en.wikipedia.org/wiki/7400_series'
+		link: 'https://en.wikipedia.org/wiki/7400-series_integrated_circuits'
 	},
 	{
 		value: 65537,

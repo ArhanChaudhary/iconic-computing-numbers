@@ -152,9 +152,10 @@
 	</p>
 	<br />
 	<ol class="list-decimal pl-[2ch]">
+		<li>You are being timed. Despite that, <b>prioritize minimizing guesses (&lt;30 guesses)</b>.</li>
 		<li>
-			There are {numbersCount} computing numbers hidden within this string without overlap (ignore the
-			line wrapping).
+			There are {numbersCount} computing numbers hidden within this string without overlap, ignore the
+			line wrapping.
 		</li>
 		<li>
 			Each number is wholly distinct in meaning and iconic in their respective fields of computing.
@@ -165,7 +166,6 @@
 		</li>
 		<li>Each number is 3-6 digits long, truncating if necessary.</li>
 		<li>The numbers become harder to identify towards the end.</li>
-		<li>You are being timed. Despite that, <b>prioritize minimizing guesses</b>.</li>
 		<li>The first number is 1970, good luck!</li>
 	</ol>
 </div>
