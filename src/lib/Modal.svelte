@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { GuessType } from '../routes/+page.svelte';
 	import { fly } from 'svelte/transition';
-	export let value: number;
+	export let value: string;
 	export let message: string;
 	export let link: string | undefined = undefined;
 	export let guessType: GuessType;

@@ -14,7 +14,7 @@
 	export let data;
 
 	let guesses = 0;
-	let modals = new Array<{ value: number; message: string; link?: string; guessType: GuessType }>();
+	let modals = new Array<{ value: string; message: string; link?: string; guessType: GuessType }>();
 	let numbersEl: HTMLDivElement;
 	let numbersCount = Object.keys(data.numbers).length;
 	let startTime: number;
@@ -65,18 +65,20 @@
 		if (e.key !== 'Enter') {
 			return;
 		}
-		if ((e.target as HTMLInputElement).value === '') return;
-		let guess = (e.target as HTMLInputElement).valueAsNumber;
+		let guess = (e.target as HTMLInputElement).value;
+		if (guess === '') return;
 		(e.target as HTMLInputElement).value = '';
 
 		if (
-			data.numbers.some(({ value, guessed }) => value === guess && guessed) ||
-			data.technicallyIncorrectNumbers.some(({ value, guessed }) => value === guess && guessed)
+			data.numbers.some(({ value, guessed }) => value.toString() === guess && guessed) ||
+			data.technicallyIncorrectNumbers.some(
+				({ value, guessed }) => value.toString() === guess && guessed
+			)
 		) {
 			modals = [
 				...modals,
 				{
-					value: guess,
+					value: guess.toString(),
 					message: 'You have already guessed this number.',
 					guessType: GuessType.technicallyIncorrect
 				}
@@ -85,13 +87,13 @@
 		}
 
 		let technicallyIncorrectNumber = data.technicallyIncorrectNumbers.find(
-			({ value }) => value === guess
+			({ value }) => value.toString() === guess
 		);
 		if (technicallyIncorrectNumber) {
 			modals = [
 				...modals,
 				{
-					value: technicallyIncorrectNumber.value,
+					value: guess,
 					message: technicallyIncorrectNumber.message,
 					guessType: GuessType.technicallyIncorrect
 				}
@@ -99,12 +101,12 @@
 			return;
 		}
 
-		let number = data.numbers.find(({ value }) => value === guess);
+		let number = data.numbers.find(({ value }) => value.toString() === guess);
 		if (number) {
 			modals = [
 				...modals,
 				{
-					value: number.value,
+					value: guess,
 					message: number.message,
 					link: number.link,
 					guessType: GuessType.correct
@@ -125,7 +127,7 @@
 					modals = [
 						...modals,
 						{
-							value: NaN,
+							value: '',
 							message,
 							guessType: GuessType.finished
 						}
@@ -157,7 +159,7 @@
 	<br />
 	<ol class="list-decimal pl-[2ch]">
 		<li>
-			You are being timed. Despite that, <b>prioritize minimizing guesses (&lt;30 guesses)</b>.
+			You are being timed. Despite that, <b>prioritize minimizing guesses (&lt;30 guesses) and avoid brute force</b>.
 		</li>
 		<li>
 			There are {numbersCount} computing numbers hidden within this string without overlap, ignore the
