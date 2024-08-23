@@ -181,6 +181,12 @@ const technicallyIncorrectNumbers = [
 		message:
 			'The HTTP status code for "Bad Request" is not an intended number. Your guess won\'t count.',
 		guessed: false
+	},
+	{
+		value: 860,
+		message:
+			'The Intel i860 microprocessor is not an intended number. Your guess won\'t count.',
+		guessed: false
 	}
 ];
 
