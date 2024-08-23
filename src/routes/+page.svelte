@@ -9,6 +9,7 @@
 
 <script lang="ts">
 	import Modal from '$lib/Modal.svelte';
+	import { onMount } from 'svelte';
 
 	export let data;
 
@@ -16,7 +17,10 @@
 	let modals = new Array<{ value: number; message: string; link?: string; guessType: GuessType }>();
 	let numbersEl: HTMLDivElement;
 	let numbersCount = Object.keys(data.numbers).length;
-	let startTime = performance.now();
+	let startTime: number;
+	onMount(() => {
+		startTime = performance.now();
+	});
 
 	function deltaToString(time: number) {
 		let hours = Math.floor(time / 3600);
@@ -152,7 +156,9 @@
 	</p>
 	<br />
 	<ol class="list-decimal pl-[2ch]">
-		<li>You are being timed. Despite that, <b>prioritize minimizing guesses (&lt;30 guesses)</b>.</li>
+		<li>
+			You are being timed. Despite that, <b>prioritize minimizing guesses (&lt;30 guesses)</b>.
+		</li>
 		<li>
 			There are {numbersCount} computing numbers hidden within this string without overlap, ignore the
 			line wrapping.
@@ -175,7 +181,9 @@
 </div>
 <div class="max-w-[40rem] mx-auto w-full mb-[150px]">
 	<input
-		type="number"
+		inputmode="numeric"
+		pattern="[0-9]*"
+		type="text"
 		class="block w-full px-3 py-2 bg-white border border-gray-700 rounded-md text-lg shadow-sm placeholder-gray-700 focus:outline-none focus:border-black"
 		placeholder="Enter your guess"
 		on:keypress={keyPress}
