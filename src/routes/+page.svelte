@@ -181,9 +181,7 @@
 </div>
 <div class="max-w-[40rem] mx-auto w-full mb-[150px]">
 	<input
-		inputmode="numeric"
-		pattern="[0-9]*"
-		type="text"
+		type="number"
 		class="block w-full px-3 py-2 bg-white border border-gray-700 rounded-md text-lg shadow-sm placeholder-gray-700 focus:outline-none focus:border-black"
 		placeholder="Enter your guess"
 		on:keypress={keyPress}
