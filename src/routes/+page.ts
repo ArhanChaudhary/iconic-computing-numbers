@@ -105,12 +105,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/X.509'
 	},
 	{
-		value: 7400,
-		message: 'A popular series of digital logic integrated circuits, once the most popular for TTL.',
-		guessed: false,
-		link: 'https://en.wikipedia.org/wiki/7400-series_integrated_circuits'
-	},
-	{
 		value: 65537,
 		message: 'The most commonly chosen exponent in the RSA cryptosystem.',
 		guessed: false,
@@ -121,6 +115,13 @@ const numbers = [
 		message: 'The chmod octal permission mode for full access.',
 		guessed: false,
 		link: 'https://en.wikipedia.org/wiki/Chmod'
+	},
+	{
+		value: 7400,
+		message:
+			'A popular series of digital logic integrated circuits, once the most popular for TTL.',
+		guessed: false,
+		link: 'https://en.wikipedia.org/wiki/7400-series_integrated_circuits'
 	},
 	{
 		value: 8601,
