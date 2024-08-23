@@ -78,7 +78,7 @@
 			modals = [
 				...modals,
 				{
-					value: guess.toString(),
+					value: guess,
 					message: 'You have already guessed this number.',
 					guessType: GuessType.technicallyIncorrect
 				}
@@ -114,7 +114,14 @@
 			];
 			number.guessed = true;
 			guesses++;
-			numbersEl.querySelector(`span[data-value="${number.value}"]`)!.classList.add('bg-green-300');
+			let numberEl = numbersEl.querySelector(`[data-value="${number.value}"]`)!;
+			let a = document.createElement('a');
+			a.href = number.link;
+			a.textContent = guess;
+			a.classList.add('bg-green-300', 'hover:bg-green-500');
+			a.setAttribute('target', '_blank');
+			a.setAttribute('rel', 'noopener noreferrer');
+			numberEl.replaceWith(a);
 			if (data.numbers.every(({ guessed }) => guessed)) {
 				let endTime = performance.now();
 				let deltaString = deltaToString((endTime - startTime) / 1000);
