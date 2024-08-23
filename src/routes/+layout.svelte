@@ -9,7 +9,7 @@
 	<meta property="og:url" content="https://numbers.arhan.sh" />
 	<meta property="og:title" content="Numbers" />
 	<meta property="og:description" content="How Many Iconic Computing Numbers can you Recognize?" />
-	<meta property="og:image" content="https://numbers.arhan.sh/favicon.png" />
+	<meta property="og:image" content="https://numbers.arhan.sh/favicon.ico" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="author" content="Arhan Chaudhary" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,7 +29,9 @@
 				class="text-blue-600 underline mx-1">Source</a
 			>
 			&#x2022;
-			<a href="https://arhan.sh" class="text-blue-600 underline mx-1">My website</a>
+			<a href="https://arhan.sh" class="text-blue-600 underline mx-1"
+				>My website</a
+			>
 		</div>
 	</div>
 </main>
