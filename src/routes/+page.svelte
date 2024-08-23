@@ -13,7 +13,7 @@
 	export let data;
 
 	let guesses = 0;
-	let modals = new Array<{ value: number; message: string; guessType: GuessType }>();
+	let modals = new Array<{ value: number; message: string; link?: string; guessType: GuessType }>();
 	let numbersEl: HTMLDivElement;
 	let numbersCount = Object.keys(data.numbers).length;
 	let startTime = performance.now();
@@ -65,14 +65,14 @@
 		let guess = (e.target as HTMLInputElement).valueAsNumber;
 		(e.target as HTMLInputElement).value = '';
 
-		let alreadyGuessedNumber = data.numbers
-			.concat(data.technicallyIncorrectNumbers)
-			.find(({ value, guessed }) => value === guess && guessed);
-		if (alreadyGuessedNumber) {
+		if (
+			data.numbers.some(({ value, guessed }) => value === guess && guessed) ||
+			data.technicallyIncorrectNumbers.some(({ value, guessed }) => value === guess && guessed)
+		) {
 			modals = [
 				...modals,
 				{
-					value: alreadyGuessedNumber.value,
+					value: guess,
 					message: 'You have already guessed this number.',
 					guessType: GuessType.technicallyIncorrect
 				}
@@ -87,7 +87,8 @@
 			modals = [
 				...modals,
 				{
-					...technicallyIncorrectNumber,
+					value: technicallyIncorrectNumber.value,
+					message: technicallyIncorrectNumber.message,
 					guessType: GuessType.technicallyIncorrect
 				}
 			];
@@ -101,6 +102,7 @@
 				{
 					value: number.value,
 					message: number.message,
+					link: number.link,
 					guessType: GuessType.correct
 				}
 			];

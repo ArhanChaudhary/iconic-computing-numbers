@@ -26,10 +26,10 @@
 		<div class="flex justify-center absolute bottom-0 h-10 items-center left-0 right-0">
 			<a
 				href="https://github.com/ArhanChaudhary/iconic-computing-numbers"
-				class="text-blue-600 dark:text-blue-500 underline mx-1">Source</a
+				class="text-blue-600 underline mx-1">Source</a
 			>
 			&#x2022;
-			<a href="https://arhan.sh" class="text-blue-600 dark:text-blue-500 underline mx-1"
+			<a href="https://arhan.sh" class="text-blue-600 underline mx-1"
 				>My website</a
 			>
 		</div>

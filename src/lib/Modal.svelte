@@ -4,6 +4,7 @@
 	import { fly } from 'svelte/transition';
 	export let value: number;
 	export let message: string;
+	export let link: string | undefined = undefined;
 	export let guessType: GuessType;
 
 	let visible = false;
@@ -36,6 +37,17 @@
 			class:bg-gray-200={guessType === GuessType.technicallyIncorrect}
 		>
 			{value}
+			{#if link}
+				&#x2022;
+				<a
+					href={link}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-blue-600 underline"
+				>
+					More info</a
+				>
+			{/if}
 		</div>
 		<div
 			class="p-4"
