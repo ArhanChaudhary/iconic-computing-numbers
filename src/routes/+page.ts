@@ -152,6 +152,10 @@ const technicallyIncorrectNumbers = [
 	{
 		value: '860',
 		message: 'The Intel i860 microprocessor'
+	},
+	{
+		value: '0000',
+		message: 'The IP block containing all possible IP addresses'
 	}
 ].map((number) => ({ ...number, guessed: false }));
 
