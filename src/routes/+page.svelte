@@ -70,10 +70,8 @@
 		(e.target as HTMLInputElement).value = '';
 
 		if (
-			data.numbers.some(({ value, guessed }) => value.toString() === guess && guessed) ||
-			data.technicallyIncorrectNumbers.some(
-				({ value, guessed }) => value.toString() === guess && guessed
-			)
+			data.numbers.some(({ value, guessed }) => value === guess && guessed) ||
+			data.technicallyIncorrectNumbers.some(({ value, guessed }) => value === guess && guessed)
 		) {
 			modals = [
 				...modals,
@@ -87,21 +85,21 @@
 		}
 
 		let technicallyIncorrectNumber = data.technicallyIncorrectNumbers.find(
-			({ value }) => value.toString() === guess
+			({ value }) => value === guess
 		);
 		if (technicallyIncorrectNumber) {
 			modals = [
 				...modals,
 				{
 					value: guess,
-					message: technicallyIncorrectNumber.message,
+					message: `${technicallyIncorrectNumber.message} is not an intended number. Your guess won't count.`,
 					guessType: GuessType.technicallyIncorrect
 				}
 			];
 			return;
 		}
 
-		let number = data.numbers.find(({ value }) => value.toString() === guess);
+		let number = data.numbers.find(({ value }) => value === guess);
 		if (number) {
 			modals = [
 				...modals,
@@ -166,11 +164,13 @@
 	<br />
 	<ol class="list-decimal pl-[2ch]">
 		<li>
-			You are being timed. Despite that, <b>prioritize minimizing guesses (&lt;30 guesses) and avoid brute force</b>.
+			You are being timed. Despite that, <b
+				>prioritize minimizing guesses (&lt;30 guesses) and avoid brute force</b
+			>.
 		</li>
 		<li>
-			There are {numbersCount} distinct iconic computing numbers hidden within this string without overlap, ignore the
-			line wrapping.
+			There are {numbersCount} distinct iconic computing numbers hidden within this string without overlap,
+			ignore the line wrapping.
 		</li>
 		<li>
 			This is not a memory test; you should be able to identify each number with little ambiguity
