@@ -135,7 +135,11 @@ const numbers = [
 const technicallyIncorrectNumbers = [
 	{
 		value: '775',
-		message: 'The chmod octal permission mode for full access'
+		message: 'The "775" chmod octal permission mode'
+	},
+	{
+		value: '740',
+		message: 'The "740" chmod octal permission mode'
 	},
 	{
 		value: '255',
