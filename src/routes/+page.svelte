@@ -154,7 +154,9 @@
 </script>
 
 <div class="text-4xl font-medium font-patua text-center px-4 py-6">
-	How Many Iconic Computing Numbers can you Recognize?
+	How Many Iconic Computing Numbers can you Recognize?<span
+		class="absolute text-gray-500 text-sm translate-y-0.25">v2</span
+	>
 </div>
 <div class="text-lg">
 	<p>
@@ -165,7 +167,7 @@
 	<ol class="list-decimal pl-[2ch]">
 		<li>
 			You are being timed. Despite that, <b
-				>prioritize minimizing guesses (&lt;30 guesses) and avoid brute force</b
+				>prioritize minimizing guesses (&lt;40 guesses) and avoid brute force</b
 			>.
 		</li>
 		<li>
