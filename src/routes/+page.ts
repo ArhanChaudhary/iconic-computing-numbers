@@ -187,7 +187,7 @@ const technicallyIncorrectNumbers = [
 	},
 	{
 		value: '500',
-		message: 'The HTTP status code for "Not Found"'
+		message: 'The HTTP status code for "Internal Server Error"'
 	},
 	{
 		value: '860',
