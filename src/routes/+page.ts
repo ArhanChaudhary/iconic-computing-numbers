@@ -20,11 +20,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Intel_8086'
 	},
 	{
-		value: '754',
-		message: 'The IEEE standard for floating-point arithmetic used by every modern computer.',
-		link: 'https://en.wikipedia.org/wiki/IEEE_754'
-	},
-	{
 		value: '414141',
 		message:
 			'The hexadecimal representation of "AAA ...", a string often used in buffer overflow attacks and other security exploits.',
@@ -45,6 +40,11 @@ const numbers = [
 		value: '9600',
 		message: 'The most common baud rate for serial communication.',
 		link: 'https://en.wikipedia.org/wiki/Baud'
+	},
+	{
+		value: '754',
+		message: 'The IEEE standard for floating-point arithmetic used by every modern computer.',
+		link: 'https://en.wikipedia.org/wiki/IEEE_754'
 	},
 	{
 		value: '443',
@@ -140,7 +140,7 @@ const numbers = [
 	},
 	{
 		value: '2718',
-		message: "The 2.7.18 last release of Python 2. Bonus points if you recognized Euler's number.",
+		message: "The last release of Python 2, version 2.7.18. Bonus points if you recognized Euler's number.",
 		link: 'https://en.wikipedia.org/wiki/History_of_Python#Version_2'
 	},
 	{
@@ -186,12 +186,20 @@ const technicallyIncorrectNumbers = [
 		message: 'The HTTP status code for "Not Found"'
 	},
 	{
+		value: '500',
+		message: 'The HTTP status code for "Not Found"'
+	},
+	{
 		value: '860',
 		message: 'The Intel i860 microprocessor'
 	},
 	{
 		value: '0000',
 		message: 'The IP block containing all possible IP addresses'
+	},
+	{
+		value: '9443',
+		message: 'The alternate SSL port for TCP'
 	}
 ].map((number) => ({ ...number, guessed: false }));
 
