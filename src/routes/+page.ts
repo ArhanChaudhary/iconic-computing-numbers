@@ -124,6 +124,11 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/7400-series_integrated_circuits'
 	},
 	{
+		value: '8831',
+		message: 'The 88x31 web button.',
+		link: 'https://indieweb.org/88x31',
+	},
+	{
 		value: '19937',
 		message: 'The MT19937 pseudorandom number generator, commonly used in C++.',
 		link: 'https://en.wikipedia.org/wiki/Mersenne_Twister'
