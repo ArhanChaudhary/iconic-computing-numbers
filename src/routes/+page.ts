@@ -68,12 +68,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Virtual_memory'
 	},
 	{
-		value: '214748',
-		message:
-			'The truncated maximum value for the signed 32-bit binary integer. Also a common hard limit in video games.',
-		link: 'https://en.wikipedia.org/wiki/2147483647'
-	},
-	{
 		value: '86400',
 		message: 'The number of seconds in a day, common in time-related calculations.',
 		link: 'https://en.wikipedia.org/wiki/second'
@@ -92,6 +86,12 @@ const numbers = [
 		value: '1500',
 		message: 'The maximum transmission unit for Ethernet frames in octets.',
 		link: 'https://en.wikipedia.org/wiki/Ethernet_frame#Structure'
+	},
+	{
+		value: '214748',
+		message:
+			'The truncated maximum value for the signed 32-bit binary integer. Also a common hard limit in video games.',
+		link: 'https://en.wikipedia.org/wiki/2147483647'
 	},
 	{
 		value: '8601',
@@ -126,7 +126,7 @@ const numbers = [
 	{
 		value: '8831',
 		message: 'The 88x31 web button.',
-		link: 'https://indieweb.org/88x31',
+		link: 'https://indieweb.org/88x31'
 	},
 	{
 		value: '19937',
@@ -140,7 +140,7 @@ const numbers = [
 	},
 	{
 		value: '2718',
-		message: "The last release of Python 2, version 2.7.18. Bonus points if you recognized Euler's number.",
+		message: 'The last release of Python 2, version 2.7.18.',
 		link: 'https://en.wikipedia.org/wiki/History_of_Python#Version_2'
 	},
 	{
