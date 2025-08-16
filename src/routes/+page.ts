@@ -135,7 +135,7 @@ const numbers = [
 	},
 	{
 		value: '2600',
-		message: 'The 2600Hz phreaking tone.',
+		message: 'The 2600Hz phreaking tone, or 2600: The Hacker Quarterly.',
 		link: 'https://en.wikipedia.org/wiki/2600_hertz'
 	},
 	{
