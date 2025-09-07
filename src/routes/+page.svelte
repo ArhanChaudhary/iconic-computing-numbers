@@ -183,7 +183,7 @@
 		<li>The first number is 1970. Press enter to submit, good luck!</li>
 	</ol>
 </div>
-<div class="text-2xl text-center break-words my-10 mx-auto max-w-[65ch]" bind:this={numbersEl}>
+<div class="text-2xl text-center break-words my-10 mx-auto max-w-[61ch]" bind:this={numbersEl}>
 	<!-- No cheating! Oh well, since you're already here you might as well check out my website while at it https://arhan.sh/ -->
 	{#each data.numbers as { value }}<span data-value={value}>{value}</span>{/each}
 </div>

@@ -63,11 +63,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/IEEE_802.11'
 	},
 	{
-		value: '400000',
-		message: 'The base virtual memory address for Linux executables in hexadecimal.',
-		link: 'https://en.wikipedia.org/wiki/Virtual_memory'
-	},
-	{
 		value: '86400',
 		message: 'The number of seconds in a day, common in time-related calculations.',
 		link: 'https://en.wikipedia.org/wiki/second'
