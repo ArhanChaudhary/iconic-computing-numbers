@@ -171,8 +171,8 @@
 			>.
 		</li>
 		<li>
-			There are {numbersCount} distinct iconic computing numbers hidden within this string without overlap,
-			ignore the line wrapping.
+			There are {numbersCount} iconic computing numbers hidden within this string without overlap, each
+			uniquely referring to a specific concept in computing. Ignore the line wrapping.
 		</li>
 		<li>
 			This is not a memory test; you should be able to identify each number with little ambiguity

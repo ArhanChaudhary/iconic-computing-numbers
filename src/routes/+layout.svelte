@@ -15,11 +15,6 @@
 				class="text-blue-600 underline mx-1">Source</a
 			>
 			&#x2022;
-			<a
-				href="https://arhan.sh/blog/how-many-iconic-computing-numbers-can-you-recognize/"
-				class="text-blue-600 underline mx-1">Blog</a
-			>
-			&#x2022;
 			<a href="https://arhan.sh" class="text-blue-600 underline mx-1">My website</a>
 		</div>
 	</div>
