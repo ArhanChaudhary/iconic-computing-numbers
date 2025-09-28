@@ -5,11 +5,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Unix_time'
 	},
 	{
-		value: '192168',
-		message: 'The 192.168.0.0/16 private IPv4 address range.',
-		link: 'https://en.wikipedia.org/wiki/Private_network#Private_IPv4_addresses'
-	},
-	{
 		value: '1337',
 		message: 'The word "Leet", or hacker speech.',
 		link: 'https://en.wikipedia.org/wiki/Leet'
@@ -18,6 +13,11 @@ const numbers = [
 		value: '8086',
 		message: 'The Intel 8086, the first microprocessor with the now-widespread x86 architecture.',
 		link: 'https://en.wikipedia.org/wiki/Intel_8086'
+	},
+	{
+		value: '192168',
+		message: 'The 192.168.0.0/16 private IPv4 address range.',
+		link: 'https://en.wikipedia.org/wiki/Private_network#Private_IPv4_addresses'
 	},
 	{
 		value: '414141',
@@ -68,14 +68,14 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/second'
 	},
 	{
-		value: '25519',
-		message: 'The Curve25519 elliptic curve, widely used in cryptography and key exchange.',
-		link: 'https://en.wikipedia.org/wiki/Curve25519'
-	},
-	{
 		value: '264',
 		message: 'The H.264 standard, the most commonly used format for video compression.',
 		link: 'https://en.wikipedia.org/wiki/Advanced_Video_Coding'
+	},
+	{
+		value: '25519',
+		message: 'The Curve25519 elliptic curve, widely used in cryptography and key exchange.',
+		link: 'https://en.wikipedia.org/wiki/Curve25519'
 	},
 	{
 		value: '1500',
