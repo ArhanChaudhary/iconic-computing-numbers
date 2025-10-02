@@ -150,7 +150,7 @@
 	}
 </script>
 
-<div class="text-4xl font-medium font-patua text-center px-3 py-6">
+<div class="text-4xl font-medium font-patua text-center px-4 py-6">
 	How Many Iconic Computing Numbers can you Recognize?<span
 		class="absolute text-gray-500 text-sm translate-y-0.25">v2</span
 	>

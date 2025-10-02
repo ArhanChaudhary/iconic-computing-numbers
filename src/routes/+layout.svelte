@@ -4,7 +4,7 @@
 
 <main class="bg-gray-100">
 	<div
-		class="mr-auto ml-auto max-w-5xl min-h-dvh bg-orange-50 px-4 shadow-[0_0_30px_5px] shadow-gray-400 relative pb-10"
+		class="mr-auto ml-auto max-w-5xl min-h-dvh bg-orange-50 px-3 shadow-[0_0_30px_5px] shadow-gray-400 relative pb-10"
 	>
 		<slot />
 		<div
