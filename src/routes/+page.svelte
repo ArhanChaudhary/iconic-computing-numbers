@@ -16,6 +16,7 @@
 	let guesses = 0;
 	let modals = new Array<{ value: string; message: string; link?: string; guessType: GuessType }>();
 	let numbersEl: HTMLDivElement;
+	let inputEl: HTMLInputElement;
 	let numbersCount = Object.keys(data.numbers).length;
 	let startTime: number;
 	onMount(() => {
@@ -61,13 +62,9 @@
 		return ret;
 	}
 
-	function keyPress(e: KeyboardEvent) {
-		if (e.key !== 'Enter') {
-			return;
-		}
-		let guess = (e.target as HTMLInputElement).value;
+	function onSubmit(guess: string) {
 		if (guess === '') return;
-		(e.target as HTMLInputElement).value = '';
+		inputEl.value = '';
 
 		if (
 			data.numbers.some(({ value, guessed }) => value === guess && guessed) ||
@@ -188,17 +185,26 @@
 	{#each data.numbers as { value }}<span data-value={value}>{value}</span>{/each}
 </div>
 <div class="max-w-[40rem] mx-auto w-full mb-10">
-	<input
-		type="number"
-		pattern="\d*"
-		class="block w-full px-3 py-2 bg-white border border-gray-700 rounded-md text-lg shadow-sm placeholder-gray-700 focus:outline-none focus:border-black"
-		placeholder="Enter your guess"
-		on:keypress={keyPress}
-		on:wheel={() => {
-			// @ts-ignore
-			document.activeElement.blur();
-		}}
-	/>
+	<div class="flex">
+		<input
+			bind:this={inputEl}
+			type="number"
+			pattern="\d*"
+			class="inline-block flex-grow px-3 py-2 bg-white border border-gray-700 rounded-md text-lg shadow-sm placeholder-gray-700 focus:outline-none focus:border-black"
+			placeholder="Enter your guess"
+			on:keypress={(e) => {
+				if (e.key === 'Enter') onSubmit(inputEl.value);
+			}}
+			on:wheel={() => {
+				// @ts-ignore
+				document.activeElement.blur();
+			}}
+		/>
+		<button
+			class="ml-2 px-3 bg-gray-200 hover:bg-gray-300 border border-gray-700 rounded-md text-lg shadow-sm"
+			on:click={() => onSubmit(inputEl.value)}>Submit</button
+		>
+	</div>
 	<span class="inline-block mt-1 mb-10 text-gray-700 text-sm">
 		{guesses} guess{guesses === 1 ? '' : 'es'} / {numbersCount} numbers
 	</span>
