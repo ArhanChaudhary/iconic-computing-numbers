@@ -202,7 +202,10 @@
 		/>
 		<button
 			class="ml-2 px-3 bg-gray-200 hover:bg-gray-300 border border-gray-700 rounded-md text-lg shadow-sm"
-			on:click={() => onSubmit(inputEl.value)}>Submit</button
+			on:click={(e) => {
+				inputEl.focus();
+				onSubmit(inputEl.value);
+			}}>Submit</button
 		>
 	</div>
 	<span class="inline-block mt-1 mb-10 text-gray-700 text-sm">
