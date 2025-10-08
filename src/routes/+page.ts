@@ -139,6 +139,11 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/History_of_Python#Version_2'
 	},
 	{
+	  value: '998244',
+			message: 'The truncated standard output modulus for efficient FFT-based polynomial computations in competitive programming.',
+			link: 'https://codeforces.com/blog/entry/62541'
+	},
+	{
 		value: '5994',
 		message: 'The 59.94Hz field refresh frequency for NTSC color.',
 		link: 'https://en.wikipedia.org/wiki/NTSC#Resolution_and_refresh_rate'
