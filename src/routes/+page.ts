@@ -188,10 +188,6 @@ const technicallyIncorrectNumbers = [
 		value: '860',
 		message: 'The Intel i860 microprocessor'
 	},
-	{
-		value: '9443',
-		message: 'The alternate SSL port for TCP'
-	}
 ].map((number) => ({ ...number, guessed: false }));
 
 export function load() {
