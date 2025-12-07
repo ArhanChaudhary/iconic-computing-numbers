@@ -20,12 +20,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Private_network#Private_IPv4_addresses'
 	},
 	{
-		value: '414141',
-		message:
-			'The hexadecimal representation of "AAA ...", a string often used in buffer overflow attacks and other security exploits.',
-		link: 'https://en.wikipedia.org/wiki/Buffer_overflow'
-	},
-	{
 		value: '44100',
 		message: 'The 44,100Hz standard sampling rate for digital and analog audio.',
 		link: 'https://en.wikipedia.org/wiki/44,100_Hz'
@@ -139,14 +133,15 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/History_of_Python#Version_2'
 	},
 	{
-	  value: '998244',
-			message: 'The truncated standard output modulus for efficient FFT-based polynomial computations in competitive programming.',
-			link: 'https://codeforces.com/blog/entry/62541'
-	},
-	{
 		value: '5994',
 		message: 'The 59.94Hz field refresh frequency for NTSC color.',
 		link: 'https://en.wikipedia.org/wiki/NTSC#Resolution_and_refresh_rate'
+	},
+	{
+		value: '998244',
+		message:
+			'The truncated standard output modulus for efficient FFT-based polynomial computations in competitive programming.',
+		link: 'https://codeforces.com/blog/entry/62541'
 	},
 	{
 		value: '437',

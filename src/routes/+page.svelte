@@ -1,9 +1,11 @@
 <script lang="ts" context="module">
+	const MAX_GUESSES = 40;
 	export enum GuessType {
 		correct,
 		incorrect,
 		technicallyIncorrect,
-		finished
+		finishedSuccess,
+		finishedFailure
 	}
 </script>
 
@@ -63,7 +65,7 @@
 	}
 
 	function onSubmit(guess: string) {
-		if (guess === '') return;
+		if (guess === '' || guesses === MAX_GUESSES) return;
 		inputEl.value = '';
 
 		if (
@@ -107,6 +109,7 @@
 					guessType: GuessType.correct
 				}
 			];
+			debugger;
 			number.guessed = true;
 			guesses++;
 			let numberEl = numbersEl.querySelector(`[data-value="${number.value}"]`)!;
@@ -121,7 +124,7 @@
 				let endTime = performance.now();
 				let deltaString = deltaToString((endTime - startTime) / 1000);
 				setTimeout(() => {
-					let message = `Congratulations! You took ${guesses} guesses to decipher the secret message in ${deltaString}.`;
+					let message = `Congratulations! You identified every iconic computing number with ${MAX_GUESSES - guesses} guess${MAX_GUESSES - guesses === 1 ? '' : 'es'} remaining in ${deltaString}.`;
 					if (guesses === numbersCount) {
 						message +=
 							' You really are a true programming hobbyist, you guessed every number correctly! 🎉🎉🎉';
@@ -131,7 +134,7 @@
 						{
 							value: '',
 							message,
-							guessType: GuessType.finished
+							guessType: GuessType.finishedSuccess
 						}
 					];
 				}, 500);
@@ -147,6 +150,22 @@
 			}
 		];
 		guesses++;
+		if (guesses === MAX_GUESSES) {
+			let endTime = performance.now();
+			let deltaString = deltaToString((endTime - startTime) / 1000);
+			setTimeout(() => {
+				modals = [
+					...modals,
+					{
+						value: '',
+						message: `You have used all of your guesses! You were only able to identify ${
+							data.numbers.filter(({ guessed }) => guessed).length
+						}/${numbersCount} iconic computing numbers in ${deltaString}.`,
+						guessType: GuessType.finishedFailure
+					}
+				];
+			}, 500);
+		}
 	}
 </script>
 
@@ -163,24 +182,20 @@
 	<br />
 	<ol class="list-decimal pl-[2ch]">
 		<li>
-			You are being timed. Despite that, <b
-				>prioritize minimizing guesses (&lt;40 guesses) and avoid brute force</b
-			>.
+			There are <b>{numbersCount}</b> iconic computing numbers hidden within this string, each
+			uniquely referring to a specific concept in computing. You have {MAX_GUESSES} guesses to
+			identify them all.
 		</li>
-		<li>
-			There are {numbersCount} iconic computing numbers hidden within this string without overlap, each
-			uniquely referring to a specific concept in computing. Ignore the line wrapping.
-		</li>
+		<li>There is no overlap, and ignore the line wrapping.</li>
 		<li>
 			This is not a memory test; you should be able to identify each number with little ambiguity
 			without external tools.
 		</li>
-		<li>Each number is 3-6 digits long, truncating if necessary.</li>
-		<li>The numbers become harder to identify towards the end.</li>
-		<li>The first number is 1970. Press enter to submit, good luck!</li>
+		<li>Each number is <b>3-6 digits long</b>, truncating if necessary.</li>
+		<li><b>The first number is 1970</b>. Press enter to submit, good luck!</li>
 	</ol>
 </div>
-<div class="text-2xl text-center break-words my-10 mx-auto max-w-[64ch]" bind:this={numbersEl}>
+<div class="text-2xl text-center break-words my-10 mx-auto max-w-[62ch]" bind:this={numbersEl}>
 	<!-- No cheating! Oh well, since you're already here you might as well check out my website while at it https://arhan.sh/ -->
 	{#each data.numbers as { value }}<span data-value={value}>{value}</span>{/each}
 </div>
@@ -196,20 +211,21 @@
 				if (e.key === 'Enter') onSubmit(inputEl.value);
 			}}
 			on:wheel={() => {
-				// @ts-ignore
+				// @ts-expect-error ts is dumb
 				document.activeElement.blur();
 			}}
 		/>
 		<button
 			class="ml-2 px-3 bg-gray-200 hover:bg-gray-300 border border-gray-700 rounded-md text-lg shadow-sm"
-			on:click={(e) => {
+			on:click={() => {
 				inputEl.focus();
 				onSubmit(inputEl.value);
 			}}>Submit</button
 		>
 	</div>
 	<span class="inline-block mt-1 mb-10 text-gray-700 text-sm">
-		{guesses} guess{guesses === 1 ? '' : 'es'} / {numbersCount} numbers
+		<!-- {guesses} guess{guesses === 1 ? '' : 'es'} / {numbersCount} numbers -->
+		{MAX_GUESSES - guesses} guess{MAX_GUESSES - guesses === 1 ? '' : 'es'} remaining
 	</span>
 	<span class="flex flex-col-reverse gap-8">
 		{#each modals as modal}

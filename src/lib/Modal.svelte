@@ -13,11 +13,20 @@
 	});
 </script>
 
-{#if guessType === GuessType.finished}
+{#if guessType === GuessType.finishedSuccess}
 	{#if visible}
 		<div
 			in:fly={{ y: -25 }}
 			class="rounded-lg overflow-hidden border border-green-700 text-lg px-4 py-6 font-medium bg-green-100"
+		>
+			{message}
+		</div>
+	{/if}
+{:else if guessType === GuessType.finishedFailure}
+	{#if visible}
+		<div
+			in:fly={{ y: -25 }}
+			class="rounded-lg overflow-hidden border border-red-700 text-lg px-4 py-6 font-medium bg-red-100"
 		>
 			{message}
 		</div>
@@ -39,12 +48,7 @@
 			{value}
 			{#if link}
 				&#x2022;
-				<a
-					href={link}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-blue-600 underline"
-				>
+				<a href={link} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
 					More info</a
 				>
 			{/if}
