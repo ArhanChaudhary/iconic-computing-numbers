@@ -109,7 +109,6 @@
 					guessType: GuessType.correct
 				}
 			];
-			debugger;
 			number.guessed = true;
 			guesses++;
 			let numberEl = numbersEl.querySelector(`[data-value="${number.value}"]`)!;
