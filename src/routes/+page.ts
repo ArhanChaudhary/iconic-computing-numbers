@@ -20,11 +20,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Private_network#Private_IPv4_addresses'
 	},
 	{
-		value: '44100',
-		message: 'The 44,100Hz standard sampling rate for digital and analog audio.',
-		link: 'https://en.wikipedia.org/wiki/44,100_Hz'
-	},
-	{
 		value: '418',
 		message:
 			'The HTTP status code for "I\'m a teapot", an April Fools\' joke by the Internet Engineering Task Force.',
@@ -45,11 +40,15 @@ const numbers = [
 		message: 'The default port for HTTPS.',
 		link: 'https://en.wikipedia.org/wiki/HTTPS#Difference_from_HTTP'
 	},
-
 	{
 		value: '3301',
 		message: 'The Cicada 3301 internet mystery, popularized by LEMMiNO.',
 		link: 'https://en.wikipedia.org/wiki/Cicada_3301'
+	},
+	{
+		value: '8601',
+		message: 'The ISO standard for human-readable universal date and time representation.',
+		link: 'https://en.wikipedia.org/wiki/ISO_8601'
 	},
 	{
 		value: '80211',
@@ -72,20 +71,15 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Curve25519'
 	},
 	{
-		value: '1500',
-		message: 'The maximum transmission unit for Ethernet frames in octets.',
-		link: 'https://en.wikipedia.org/wiki/Ethernet_frame#Structure'
+		value: '44100',
+		message: 'The 44,100Hz standard sampling rate for digital and analog audio.',
+		link: 'https://en.wikipedia.org/wiki/44,100_Hz'
 	},
 	{
 		value: '214748',
 		message:
 			'The truncated maximum value for the signed 32-bit binary integer. Also a common hard limit in video games.',
 		link: 'https://en.wikipedia.org/wiki/2147483647'
-	},
-	{
-		value: '8601',
-		message: 'The ISO standard for human-readable universal date and time representation.',
-		link: 'https://en.wikipedia.org/wiki/ISO_8601'
 	},
 	{
 		value: '640480',
@@ -113,14 +107,14 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/7400-series_integrated_circuits'
 	},
 	{
-		value: '8831',
-		message: 'The 88x31 web button.',
-		link: 'https://indieweb.org/88x31'
-	},
-	{
 		value: '19937',
 		message: 'The MT19937 pseudorandom number generator, commonly used in C++.',
 		link: 'https://en.wikipedia.org/wiki/Mersenne_Twister'
+	},
+	{
+		value: '8831',
+		message: 'The 88x31 web button.',
+		link: 'https://indieweb.org/88x31'
 	},
 	{
 		value: '2600',
@@ -128,14 +122,14 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/2600_hertz'
 	},
 	{
-		value: '2718',
-		message: 'The last release of Python 2, version 2.7.18.',
-		link: 'https://en.wikipedia.org/wiki/History_of_Python#Version_2'
-	},
-	{
 		value: '5994',
 		message: 'The 59.94Hz field refresh frequency for NTSC color.',
 		link: 'https://en.wikipedia.org/wiki/NTSC#Resolution_and_refresh_rate'
+	},
+	{
+		value: '1500',
+		message: 'The maximum transmission unit for Ethernet frames in octets.',
+		link: 'https://en.wikipedia.org/wiki/Ethernet_frame#Structure'
 	},
 	{
 		value: '998244',
@@ -187,7 +181,7 @@ const technicallyIncorrectNumbers = [
 	{
 		value: '860',
 		message: 'The Intel i860 microprocessor'
-	},
+	}
 ].map((number) => ({ ...number, guessed: false }));
 
 export function load() {

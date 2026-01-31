@@ -37,13 +37,13 @@
 		class="rounded-lg overflow-hidden border"
 		class:border-green-700={guessType === GuessType.correct}
 		class:border-red-700={guessType === GuessType.incorrect}
-		class:border-gray-700={guessType === GuessType.technicallyIncorrect}
+		class:border-gray-700={guessType === GuessType.doesNotCount}
 	>
 		<div
 			class="text-lg px-4 py-1 font-medium"
 			class:bg-green-200={guessType === GuessType.correct}
 			class:bg-red-200={guessType === GuessType.incorrect}
-			class:bg-gray-200={guessType === GuessType.technicallyIncorrect}
+			class:bg-gray-200={guessType === GuessType.doesNotCount}
 		>
 			{value}
 			{#if link}
@@ -57,7 +57,7 @@
 			class="p-4"
 			class:bg-green-50={guessType === GuessType.correct}
 			class:bg-red-50={guessType === GuessType.incorrect}
-			class:bg-gray-50={guessType === GuessType.technicallyIncorrect}
+			class:bg-gray-50={guessType === GuessType.doesNotCount}
 		>
 			{message}
 		</div>

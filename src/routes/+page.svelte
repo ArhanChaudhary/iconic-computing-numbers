@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
-	const MAX_GUESSES = 40;
+	const MAX_GUESSES = 45;
 	export enum GuessType {
 		correct,
 		incorrect,
-		technicallyIncorrect,
+		doesNotCount,
 		finishedSuccess,
 		finishedFailure
 	}
@@ -20,6 +20,7 @@
 	let numbersEl: HTMLDivElement;
 	let inputEl: HTMLInputElement;
 	let numbersCount = Object.keys(data.numbers).length;
+	let joined = data.numbers.map(({ value }) => value).join('');
 	let startTime: number;
 	onMount(() => {
 		startTime = performance.now();
@@ -65,7 +66,7 @@
 	}
 
 	function onSubmit(guess: string) {
-		if (guess === '' || guesses === MAX_GUESSES) return;
+		if (guess === '') return;
 		inputEl.value = '';
 
 		if (
@@ -77,7 +78,7 @@
 				{
 					value: guess,
 					message: 'You have already guessed this number.',
-					guessType: GuessType.technicallyIncorrect
+					guessType: GuessType.doesNotCount
 				}
 			];
 			return;
@@ -92,11 +93,23 @@
 				{
 					value: guess,
 					message: `${technicallyIncorrectNumber.message} is not an intended number. Your guess won't count.`,
-					guessType: GuessType.technicallyIncorrect
+					guessType: GuessType.doesNotCount
 				}
 			];
 			return;
 		}
+		if (!joined.includes(guess)) {
+			modals = [
+				...modals,
+				{
+					value: guess,
+					message: "Your guess does not appear in the number string and won't be counted.",
+					guessType: GuessType.doesNotCount
+				}
+			];
+			return;
+		}
+		guesses++;
 
 		let number = data.numbers.find(({ value }) => value === guess);
 		if (number) {
@@ -110,7 +123,6 @@
 				}
 			];
 			number.guessed = true;
-			guesses++;
 			let numberEl = numbersEl.querySelector(`[data-value="${number.value}"]`)!;
 			let a = document.createElement('a');
 			a.href = number.link;
@@ -119,11 +131,11 @@
 			a.setAttribute('target', '_blank');
 			a.setAttribute('rel', 'noopener noreferrer');
 			numberEl.replaceWith(a);
-			if (data.numbers.every(({ guessed }) => guessed)) {
+			if (data.numbers.every(({ guessed }) => guessed) && guesses <= MAX_GUESSES) {
 				let endTime = performance.now();
 				let deltaString = deltaToString((endTime - startTime) / 1000);
 				setTimeout(() => {
-					let message = `Congratulations! You identified every iconic computing number with ${MAX_GUESSES - guesses} guess${MAX_GUESSES - guesses === 1 ? '' : 'es'} remaining in ${deltaString}.`;
+					let message = `Congratulations! You identified every iconic computing number with ${MAX_GUESSES - guesses || 'no more'} guess${MAX_GUESSES - guesses === 1 ? '' : 'es'} remaining in ${deltaString}.`;
 					if (guesses === numbersCount) {
 						message +=
 							' You really are a true programming hobbyist, you guessed every number correctly! 🎉🎉🎉';
@@ -137,18 +149,18 @@
 						}
 					];
 				}, 500);
+				return;
 			}
-			return;
+		} else {
+			modals = [
+				...modals,
+				{
+					value: guess,
+					message: 'Your guess was incorrect.',
+					guessType: GuessType.incorrect
+				}
+			];
 		}
-		modals = [
-			...modals,
-			{
-				value: guess,
-				message: 'Your guess was incorrect.',
-				guessType: GuessType.incorrect
-			}
-		];
-		guesses++;
 		if (guesses === MAX_GUESSES) {
 			let endTime = performance.now();
 			let deltaString = deltaToString((endTime - startTime) / 1000);
@@ -182,19 +194,19 @@
 	<ol class="list-decimal pl-[2ch]">
 		<li>
 			There are <b>{numbersCount}</b> iconic computing numbers hidden within this string, each
-			uniquely referring to a specific concept in computing. You have {MAX_GUESSES} guesses to
-			identify them all.
+			uniquely referring to a specific concept in computing. You have {MAX_GUESSES} guesses to identify
+			them all.
 		</li>
-		<li>There is no overlap, and ignore the line wrapping.</li>
+		<li>There is no overlap, and every digit is used. Ignore the line wrapping.</li>
 		<li>
-			This is not a memory test; you should be able to identify each number with little ambiguity
+			This is not a memory test; you should be able to identify every number with little ambiguity
 			without external tools.
 		</li>
-		<li>Each number is <b>3-6 digits long</b>, truncating if necessary.</li>
-		<li><b>The first number is 1970</b>. Press enter to submit, good luck!</li>
+		<li>Every number is <b>3-6 digits long</b>, truncating if necessary.</li>
+		<li><b>The first number is {data.numbers[0].value}</b>. Press enter to submit, good luck!</li>
 	</ol>
 </div>
-<div class="text-2xl text-center break-words my-10 mx-auto max-w-[62ch]" bind:this={numbersEl}>
+<div class="text-2xl text-center break-words my-10 mx-auto max-w-[60ch]" bind:this={numbersEl}>
 	<!-- No cheating! Oh well, since you're already here you might as well check out my website while at it https://arhan.sh/ -->
 	{#each data.numbers as { value }}<span data-value={value}>{value}</span>{/each}
 </div>
@@ -224,7 +236,11 @@
 	</div>
 	<span class="inline-block mt-1 mb-10 text-gray-700 text-sm">
 		<!-- {guesses} guess{guesses === 1 ? '' : 'es'} / {numbersCount} numbers -->
-		{MAX_GUESSES - guesses} guess{MAX_GUESSES - guesses === 1 ? '' : 'es'} remaining
+		{#if guesses >= MAX_GUESSES}
+			You have used all of your guesses
+		{:else}
+			{MAX_GUESSES - guesses} guess{MAX_GUESSES - guesses === 1 ? '' : 'es'} remaining
+		{/if}
 	</span>
 	<span class="flex flex-col-reverse gap-8">
 		{#each modals as modal}
