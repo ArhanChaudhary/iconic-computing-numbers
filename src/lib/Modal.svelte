@@ -19,7 +19,7 @@
 			in:fly={{ y: -25 }}
 			class="rounded-lg overflow-hidden border border-green-700 text-lg px-4 py-6 font-medium bg-green-100"
 		>
-			{message}
+			{@html message}
 		</div>
 	{/if}
 {:else if guessType === GuessType.finishedFailure}

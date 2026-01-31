@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-	const MAX_GUESSES = 45;
+	const MAX_GUESSES = 40;
 	export enum GuessType {
 		correct,
 		incorrect,
@@ -22,6 +22,7 @@
 	let numbersCount = Object.keys(data.numbers).length;
 	let joined = data.numbers.map(({ value }) => value).join('');
 	let startTime: number;
+	let incorrectGuesses = new Array<string>();
 	onMount(() => {
 		startTime = performance.now();
 	});
@@ -71,7 +72,8 @@
 
 		if (
 			data.numbers.some(({ value, guessed }) => value === guess && guessed) ||
-			data.technicallyIncorrectNumbers.some(({ value, guessed }) => value === guess && guessed)
+			data.technicallyIncorrectNumbers.some(({ value, guessed }) => value === guess && guessed) ||
+			incorrectGuesses.includes(guess)
 		) {
 			modals = [
 				...modals,
@@ -103,7 +105,7 @@
 				...modals,
 				{
 					value: guess,
-					message: "Your guess does not appear in the number string and won't be counted.",
+					message: "Your guess does not appear in the numbers string. Your guess won't count.",
 					guessType: GuessType.doesNotCount
 				}
 			];
@@ -140,6 +142,8 @@
 						message +=
 							' You really are a true programming hobbyist, you guessed every number correctly! 🎉🎉🎉';
 					}
+					message +=
+						'<br><br>Thank you so much for playing! I love the idea of having a puzzle that only experienced computer scientists would be able to solve. This game has taken me months of on-and-off research to put together, with the help of my friend <a href="https://bithole.dev/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">Adrian</a> and the <a href="https://www.purduehackers.com/" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">Purdue Hackers</a> community.';
 					modals = [
 						...modals,
 						{
@@ -160,6 +164,7 @@
 					guessType: GuessType.incorrect
 				}
 			];
+			incorrectGuesses.push(guess);
 		}
 		if (guesses === MAX_GUESSES) {
 			let endTime = performance.now();
@@ -171,7 +176,7 @@
 						value: '',
 						message: `You have used all of your guesses! You were only able to identify ${
 							data.numbers.filter(({ guessed }) => guessed).length
-						}/${numbersCount} iconic computing numbers in ${deltaString}.`,
+						}/${numbersCount} iconic computing numbers in ${deltaString}. You may keep guessing to reveal the rest of the numbers.`,
 						guessType: GuessType.finishedFailure
 					}
 				];
@@ -188,14 +193,14 @@
 <div class="text-lg">
 	<p>
 		I'm a huge fan of both computer science and secret messages. If that's your cup of tea, I
-		challenge you to decipher this secret message and test your general knowledge of computing.
+		challenge you to decipher this puzzle and test your general knowledge of computing.
 	</p>
 	<br />
 	<ol class="list-decimal pl-[2ch]">
 		<li>
 			There are <b>{numbersCount}</b> iconic computing numbers hidden within this string, each
-			uniquely referring to a specific concept in computing. You have {MAX_GUESSES} guesses to identify
-			them all.
+			<b>uniquely</b> referring to a specific concept in computing. You have {MAX_GUESSES} guesses to
+			identify them all.
 		</li>
 		<li>There is no overlap, and every digit is used. Ignore the line wrapping.</li>
 		<li>
@@ -203,10 +208,10 @@
 			without external tools.
 		</li>
 		<li>Every number is <b>3-6 digits long</b>, truncating if necessary.</li>
-		<li><b>The first number is {data.numbers[0].value}</b>. Press enter to submit, good luck!</li>
+		<li><b>The first number is {data.numbers[0].value}</b>. Press enter to submit. Good luck!</li>
 	</ol>
 </div>
-<div class="text-2xl text-center break-words my-10 mx-auto max-w-[60ch]" bind:this={numbersEl}>
+<div class="text-2xl text-center break-words my-10 mx-auto max-w-[62ch]" bind:this={numbersEl}>
 	<!-- No cheating! Oh well, since you're already here you might as well check out my website while at it https://arhan.sh/ -->
 	{#each data.numbers as { value }}<span data-value={value}>{value}</span>{/each}
 </div>
@@ -235,7 +240,6 @@
 		>
 	</div>
 	<span class="inline-block mt-1 mb-10 text-gray-700 text-sm">
-		<!-- {guesses} guess{guesses === 1 ? '' : 'es'} / {numbersCount} numbers -->
 		{#if guesses >= MAX_GUESSES}
 			You have used all of your guesses
 		{:else}

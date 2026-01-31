@@ -143,6 +143,11 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Code_page_437'
 	},
 	{
+		value: '2718',
+		message: 'The last release of Python 2, version 2.7.18.',
+		link: 'https://en.wikipedia.org/wiki/History_of_Python#Version_2'
+	},
+	{
 		value: '471768',
 		message: 'The truncated solution to the 25-year-long Busy Beaver Challenge.',
 		link: 'https://bbchallenge.org/story'
