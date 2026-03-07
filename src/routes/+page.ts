@@ -20,12 +20,6 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/Private_network#Private_IPv4_addresses'
 	},
 	{
-		value: '418',
-		message:
-			'The HTTP status code for "I\'m a teapot", an April Fools\' joke by the Internet Engineering Task Force.',
-		link: 'https://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol'
-	},
-	{
 		value: '9600',
 		message: 'The most common baud rate for serial communication.',
 		link: 'https://en.wikipedia.org/wiki/Baud'
@@ -44,6 +38,12 @@ const numbers = [
 		value: '3301',
 		message: 'The Cicada 3301 internet mystery, popularized by LEMMiNO.',
 		link: 'https://en.wikipedia.org/wiki/Cicada_3301'
+	},
+	{
+		value: '418',
+		message:
+			'The HTTP status code for "I\'m a teapot", an April Fools\' joke by the Internet Engineering Task Force.',
+		link: 'https://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol'
 	},
 	{
 		value: '8601',
