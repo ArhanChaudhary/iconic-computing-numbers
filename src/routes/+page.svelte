@@ -221,8 +221,8 @@
 		</li>
 		<li>Every number is <b>3-6 digits long</b>, truncating if necessary.</li>
 		<li>
-			<b>The first number is {data.numbers[0].value}</b>. By rule three, there are no other years.
-			Good luck!
+			<b>The first number is the year {data.numbers[0].value}</b>. By rule three, there are no other
+			years. Good luck!
 		</li>
 	</ol>
 </div>
