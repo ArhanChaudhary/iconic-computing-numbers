@@ -70,6 +70,18 @@
 		if (guess === '') return;
 		inputEl.value = '';
 
+		if (guess.length < 3 || guess.length > 6) {
+			modals = [
+				...modals,
+				{
+					value: guess,
+					message: "Your guess must be 3-6 digits long. Your guess won't count.",
+					guessType: GuessType.doesNotCount
+				}
+			];
+			return;
+		}
+
 		if (
 			data.numbers.some(({ value, guessed }) => value === guess && guessed) ||
 			data.technicallyIncorrectNumbers.some(({ value, guessed }) => value === guess && guessed) ||
@@ -79,7 +91,7 @@
 				...modals,
 				{
 					value: guess,
-					message: 'You have already guessed this number.',
+					message: "You have already guessed this number. Your guess won't count.",
 					guessType: GuessType.doesNotCount
 				}
 			];
@@ -199,16 +211,19 @@
 	<ol class="list-decimal pl-[2ch]">
 		<li>
 			There are <b>{numbersCount}</b> iconic computing numbers hidden within this string, each
-			<b>uniquely</b> referring to a specific concept in computing. You have {MAX_GUESSES} guesses to
-			identify them all.
+			referring to a specific concept in computing. You have {MAX_GUESSES} guesses to identify them all.
 		</li>
 		<li>There is no overlap, and every digit is used. Ignore the line wrapping.</li>
+		<li>No two numbers are the same kind of number.</li>
 		<li>
 			This is not a memory test; you should be able to identify every number with little ambiguity
 			without external tools.
 		</li>
 		<li>Every number is <b>3-6 digits long</b>, truncating if necessary.</li>
-		<li><b>The first number is {data.numbers[0].value}</b>. Press enter to submit. Good luck!</li>
+		<li>
+			<b>The first number is {data.numbers[0].value}</b>. By rule three, there are no other years.
+			Good luck!
+		</li>
 	</ol>
 </div>
 <div class="text-2xl text-center break-words my-10 mx-auto max-w-[62ch]" bind:this={numbersEl}>
