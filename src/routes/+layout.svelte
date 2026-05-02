@@ -14,8 +14,6 @@
 				href="https://github.com/ArhanChaudhary/iconic-computing-numbers"
 				class="text-blue-600 underline mx-1">Source</a
 			>
-			&#x2022;
-			<a href="https://arhan.sh" class="text-blue-600 underline mx-1">My website</a>
 		</div>
 	</div>
 </main>
