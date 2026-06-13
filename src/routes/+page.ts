@@ -51,9 +51,9 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/ISO_8601'
 	},
 	{
-		value: '80211',
-		message: 'The IEEE 802.11 standard for wireless networking.',
-		link: 'https://en.wikipedia.org/wiki/IEEE_802.11'
+		value: '25519',
+		message: 'The Curve25519 elliptic curve, widely used in cryptography and key exchange.',
+		link: 'https://en.wikipedia.org/wiki/Curve25519'
 	},
 	{
 		value: '86400',
@@ -61,14 +61,14 @@ const numbers = [
 		link: 'https://en.wikipedia.org/wiki/second'
 	},
 	{
+		value: '80211',
+		message: 'The IEEE 802.11 standard for wireless networking.',
+		link: 'https://en.wikipedia.org/wiki/IEEE_802.11'
+	},
+	{
 		value: '264',
 		message: 'The H.264 standard, the most commonly used format for video compression.',
 		link: 'https://en.wikipedia.org/wiki/Advanced_Video_Coding'
-	},
-	{
-		value: '25519',
-		message: 'The Curve25519 elliptic curve, widely used in cryptography and key exchange.',
-		link: 'https://en.wikipedia.org/wiki/Curve25519'
 	},
 	{
 		value: '44100',
