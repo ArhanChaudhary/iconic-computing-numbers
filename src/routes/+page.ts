@@ -52,7 +52,7 @@ const numbers = [
 	},
 	{
 		value: '25519',
-		message: 'The Curve25519 elliptic curve, widely used in cryptography and key exchange.',
+		message: 'The Curve25519 elliptic curve, widely used in cryptography and key exchange, most notably for SSH keys.',
 		link: 'https://en.wikipedia.org/wiki/Curve25519'
 	},
 	{
